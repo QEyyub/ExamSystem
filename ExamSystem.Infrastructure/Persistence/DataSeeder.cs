@@ -60,7 +60,7 @@ namespace ExamSystem.Infrastructure.Persistence
                 }
 
                 context.Students.AddRange(students);
-                context.SaveChanges();
+                context.SaveChanges();  //Error foreign key xetasi var baxarsan
             }
 
             if (!context.Exams.Any())
