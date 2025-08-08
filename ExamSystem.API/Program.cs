@@ -1,8 +1,5 @@
-using ExamSystem.Application.CQRS.Exams.Commands.CreateExam;
-using Microsoft.Extensions.DependencyInjection;
+﻿using ExamSystem.Application.CQRS.Exams.Commands.CreateExam;
 using ExamSystem.Infrastructure;
-using ExamSystem.Infrastructure.Persistence;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +14,19 @@ builder.Services.AddMediatR(cfg =>
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
+// --- Burada CORS siyasətini əlavə et ---
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularDevClient", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+// --------------------------------------------
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -27,8 +37,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// --- Burada CORS middleware əlavə et ---
+app.UseCors("AllowAngularDevClient");
+// -----------------------------------------
+
 app.UseAuthorization();
 
-app.MapControllers(); DataSeeder.Seed(app.Services);
+app.MapControllers();
 
 app.Run();
