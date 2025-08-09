@@ -14,7 +14,6 @@ builder.Services.AddMediatR(cfg =>
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
-// --- Burada CORS siyasətini əlavə et ---
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularDevClient", policy =>
@@ -25,7 +24,6 @@ builder.Services.AddCors(options =>
               .AllowCredentials();
     });
 });
-// --------------------------------------------
 
 var app = builder.Build();
 
@@ -37,9 +35,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// --- Burada CORS middleware əlavə et ---
 app.UseCors("AllowAngularDevClient");
-// -----------------------------------------
 
 app.UseAuthorization();
 
