@@ -26,7 +26,7 @@ namespace ExamSystem.Domain.Entities
         public DateTime ExamDate { get; set; }
 
         [Range(0, 10)]
-        public int Grade { get; set; } // Qiymət
+        public int Grade { get; set; } 
     }
 
 }

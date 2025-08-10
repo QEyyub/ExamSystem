@@ -11,14 +11,14 @@ namespace ExamSystem.Domain.Entities
     {
         [Key]
         [StringLength(3)]
-        public string Code { get; set; } // char(3)
+        public string Code { get; set; } 
 
         [Required]
         [StringLength(30)]
-        public string Name { get; set; } // varchar(30)
+        public string Name { get; set; } 
 
         [Range(1, 11)]
-        public int Class { get; set; } // number(2,0)
+        public int Class { get; set; }
 
         [Required]
         [StringLength(20)]

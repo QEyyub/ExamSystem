@@ -17,7 +17,6 @@ namespace ExamSystem.Application.CQRS.Exams.Commands.UpdateExam
 
         public async Task<bool> Handle(UpdateExamCommand request, CancellationToken cancellationToken)
         {
-            // Əvvəlcə mövcud imtahanı tapırıq (köhnə LessonCode və StudentNumber ilə)
             var exam = await _context.Exams
                 .FirstOrDefaultAsync(e => e.LessonCode == request.OldLessonCode &&
                                           e.StudentNumber == request.OldStudentNumber, cancellationToken);
@@ -25,19 +24,16 @@ namespace ExamSystem.Application.CQRS.Exams.Commands.UpdateExam
             if (exam == null)
                 return false;
 
-            // Lesson mövcudmu?
             var lessonExists = await _context.Lessons
                 .AnyAsync(l => l.Code == request.LessonCode, cancellationToken);
             if (!lessonExists)
                 throw new Exception("Lesson tapılmadı!");
 
-            // Student mövcudmu?
             var studentExists = await _context.Students
                 .AnyAsync(s => s.Number == request.StudentNumber, cancellationToken);
             if (!studentExists)
                 throw new Exception("Student tapılmadı!");
 
-            // Yenilənəcək dəyərlər
             exam.LessonCode = request.LessonCode;
             exam.StudentNumber = request.StudentNumber;
             exam.ExamDate = request.ExamDate;

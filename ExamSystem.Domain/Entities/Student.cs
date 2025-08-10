@@ -10,7 +10,7 @@ namespace ExamSystem.Domain.Entities
     public class Student
     {
         [Key]
-        public int Number { get; set; } // number(5,0)
+        public int Number { get; set; } 
 
         [Required]
         [StringLength(30)]

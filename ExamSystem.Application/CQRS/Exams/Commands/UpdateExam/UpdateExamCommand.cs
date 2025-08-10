@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace ExamSystem.Application.CQRS.Exams.Commands.UpdateExam
 {
-    public class UpdateExamCommand : IRequest<bool>
+    public class UpdateExamCommand : IRequest<bool> //Burda cox error aldm . az-maz mentiqsiz yanasa bilerem, ama isleyir ))
     {
-        // Köhnə
         public string OldLessonCode { get; set; }
         public int OldStudentNumber { get; set; }
 
-        // Yeni
         public string LessonCode { get; set; }
         public int StudentNumber { get; set; }
         public DateTime ExamDate { get; set; }
