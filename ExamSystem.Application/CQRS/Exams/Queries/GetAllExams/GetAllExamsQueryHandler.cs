@@ -24,7 +24,7 @@ namespace ExamSystem.Application.CQRS.Exams.Queries.GetAllExams
                     LessonCode = e.LessonCode,
                     StudentNumber = e.StudentNumber,
                     ExamDate = e.ExamDate,
-                    Class = e.Class,
+                    Grade = e.Grade,
                     LessonName = e.Lesson.Name,
                     StudentName = e.Student.FirstName,
                     StudentSurname = e.Student.LastName

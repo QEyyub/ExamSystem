@@ -11,9 +11,10 @@ namespace ExamSystem.Application.CQRS.Exams.DTOs
         public string LessonCode { get; set; }
         public int StudentNumber { get; set; }
         public DateTime ExamDate { get; set; }
-        public int Class { get; set; }
+        public int Grade { get; set; }
         public string LessonName { get; set; }
         public string StudentName { get; set; }
         public string StudentSurname { get; set; }
+
     }
 }

@@ -26,7 +26,7 @@ namespace ExamSystem.Application.CQRS.Exams.Commands.CreateExam
                 LessonCode = request.LessonCode,
                 StudentNumber = request.StudentNumber,
                 ExamDate = request.ExamDate,
-                Class = request.Class
+                Grade = request.Grade
             };
 
             _context.Exams.Add(exam);

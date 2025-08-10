@@ -35,6 +35,9 @@ namespace ExamSystem.API.Controllers
         [HttpDelete("{code}")]
         public async Task<IActionResult> Delete(string code)
         {
+            if (string.IsNullOrWhiteSpace(code))
+                return BadRequest("Dərs kodu boş ola bilməz.");
+
             var result = await _mediator.Send(new DeleteLessonCommand { Code = code });
             return result ? Ok("Dərs silindi") : NotFound("Dərs tapılmadı");
         }
@@ -42,8 +45,19 @@ namespace ExamSystem.API.Controllers
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateLessonCommand command)
         {
+            if (command == null || string.IsNullOrWhiteSpace(command.Code))
+                return BadRequest("Dərs məlumatları və kodu mütləqdir.");
+
             var result = await _mediator.Send(command);
             return result ? Ok("Dərs yeniləndi") : NotFound("Dərs tapılmadı");
+        }
+
+        [HttpGet("codes")]
+        public async Task<IActionResult> GetLessonCodes()
+        {
+            var lessons = await _mediator.Send(new GetAllLessonsQuery());
+            var codes = lessons.Select(l => l.Code).ToList();
+            return Ok(codes);
         }
     }
 }

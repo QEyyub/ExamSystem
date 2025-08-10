@@ -36,15 +36,20 @@ namespace ExamSystem.API.Controllers
             return Ok(exams);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateExamCommand command)
+        [HttpPut("{lessonCode}/{studentNumber}")]
+        public async Task<IActionResult> Update(string lessonCode, int studentNumber, [FromBody] UpdateExamCommand command)
         {
+            command.OldLessonCode = lessonCode;
+            command.OldStudentNumber = studentNumber;
+
             var result = await _mediator.Send(command);
+
             if (!result)
                 return NotFound("İmtahan tapılmadı");
 
             return Ok("İmtahan uğurla yeniləndi");
         }
+
 
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery] string lessonCode, [FromQuery] int studentNumber)

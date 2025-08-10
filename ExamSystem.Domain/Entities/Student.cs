@@ -10,7 +10,7 @@ namespace ExamSystem.Domain.Entities
     public class Student
     {
         [Key]
-        public int Number { get; set; }
+        public int Number { get; set; } // number(5,0)
 
         [Required]
         [StringLength(30)]
@@ -25,6 +25,5 @@ namespace ExamSystem.Domain.Entities
 
         public ICollection<Exam> Exams { get; set; }
     }
-
 
 }

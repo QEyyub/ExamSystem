@@ -14,6 +14,7 @@ namespace ExamSystem.Domain.Entities
         public int Id { get; set; }
 
         [Required]
+        [StringLength(3)]
         public string LessonCode { get; set; }
         public Lesson Lesson { get; set; }
 
@@ -24,9 +25,8 @@ namespace ExamSystem.Domain.Entities
         [Required]
         public DateTime ExamDate { get; set; }
 
-        [Range(0, 5)]
-        public int Class { get; set; }
+        [Range(0, 10)]
+        public int Grade { get; set; } // Qiymət
     }
-
 
 }

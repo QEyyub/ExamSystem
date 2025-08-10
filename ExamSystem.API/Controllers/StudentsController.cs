@@ -48,5 +48,13 @@ namespace ExamSystem.API.Controllers
 
             return Ok("Tələbə uğurla yeniləndi");
         }
+
+        [HttpGet("numbers")]
+        public async Task<IActionResult> GetStudentNames()
+        {
+            var students = await _mediator.Send(new GetAllStudentsQuery());
+            var numbers = students.Select(s => s.Number).ToList();
+            return Ok(numbers);
+        }
     }
 }
