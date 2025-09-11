@@ -13,7 +13,7 @@ builder.Services.AddMediatR(cfg =>
 });
 
 builder.Services.AddInfrastructure(builder.Configuration);
-//dat
+//da
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularDevClient", policy =>
