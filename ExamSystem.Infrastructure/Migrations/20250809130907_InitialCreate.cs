@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ExamSystem.Infrastructure.Migrations
 {
-    /// <inheritdoc />
+    /// <inheritdocdadfsaedfsadf />
     public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
