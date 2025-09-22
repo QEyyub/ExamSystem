@@ -8,7 +8,7 @@ namespace ExamSystem.Infrastructure.Migrations
     /// <inheritdocdadfsaedfsadf />
     public partial class InitialCreate : Migration
     {
-        /// <inheritdoc />
+        /// <inheritdodadawdawc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
