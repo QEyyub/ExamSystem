@@ -14,6 +14,7 @@ namespace ExamSystem.Application.CQRS.Exams.Commands.CreateExam
         public int StudentNumber { get; set; }
         public DateTime ExamDate { get; set; }
         public int Grade { get; set; }
+        // date
     }
 
 }
